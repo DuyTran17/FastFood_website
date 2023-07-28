@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="56b57b1b1f194ebcbc8654cdd183e929" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="Do_An_CDTNKTPM1Model.Account" Width="1.5" PointX="8" PointY="1.125" />
+        <EntityTypeShape EntityType="Do_An_CDTNKTPM1Model.Cart" Width="1.5" PointX="5.5" PointY="4.75" />
+        <EntityTypeShape EntityType="Do_An_CDTNKTPM1Model.CartDetail" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="Do_An_CDTNKTPM1Model.Category" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="Do_An_CDTNKTPM1Model.Customer" Width="1.5" PointX="8.25" PointY="4.625" />
+        <EntityTypeShape EntityType="Do_An_CDTNKTPM1Model.Product" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="Do_An_CDTNKTPM1Model.FK__Customer__accoun__37703C52" />
+        <AssociationConnector Association="Do_An_CDTNKTPM1Model.FK__Cart__Customer_i__3A4CA8FD" />
+        <AssociationConnector Association="Do_An_CDTNKTPM1Model.FK__CartDetai__Cart___3D2915A8" />
+        <AssociationConnector Association="Do_An_CDTNKTPM1Model.FK__CartDetai__Produ__3E1D39E1" />
+        <AssociationConnector Association="Do_An_CDTNKTPM1Model.FK__Product__Categor__5165187F" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

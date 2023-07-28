@@ -1,0 +1,40 @@
+﻿@using WebApplication1.Models
+@model WebApplication1.Models.Account
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="login-box">
+
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Sign up to start your session</p>
+
+        @using (Html.BeginForm("Register", "Register", FormMethod.Post))
+        {
+
+            <div class="form-group has-feedback">
+                @Html.TextBox("acc", null, new { @class = "form-control", @placeholder = "Name" })
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                @Html.Password("pass", null, new { @class = "form-control", @placeholder = "Pass" })
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Sign Up</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        }
+    
+        
+
+
+
+    </div>
+    <!-- /.login-box-body -->
+</div>
+

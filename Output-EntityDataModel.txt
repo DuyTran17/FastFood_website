@@ -1,0 +1,18 @@
+﻿Generated model file: Database_DACS.edmx.
+Loading metadata from the database took 00:00:02.3995873.
+Generating the model took 00:00:02.0714112.
+Added the connection string to the Web.Config file.
+Writing the .edmx file took 00:00:00.0006847.
+Generated model file: Database_DACS.edmx.
+Loading metadata from the database took 00:00:00.4587920.
+Generating the model took 00:00:01.2822840.
+Added the connection string to the Web.Config file.
+Generated model file: Database_DACS.edmx.
+Loading metadata from the database took 00:00:00.5045123.
+Generating the model took 00:00:01.1954208.
+Generated model file: Database_DACS.edmx.
+Loading metadata from the database took 00:00:00.4589397.
+Generating the model took 00:00:00.3027059.
+Generated model file: Database_DACS.edmx.
+Loading metadata from the database took 00:00:00.4455296.
+Generating the model took 00:00:00.2923240.

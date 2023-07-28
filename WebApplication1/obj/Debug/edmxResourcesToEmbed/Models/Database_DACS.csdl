@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Do_An_CDTNKTPM1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Do_An_CDTNKTPM1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Do_An_CDTNKTPM1Model.Account" />
+    <EntitySet Name="Carts" EntityType="Do_An_CDTNKTPM1Model.Cart" />
+    <EntitySet Name="CartDetails" EntityType="Do_An_CDTNKTPM1Model.CartDetail" />
+    <EntitySet Name="Categories" EntityType="Do_An_CDTNKTPM1Model.Category" />
+    <EntitySet Name="Customers" EntityType="Do_An_CDTNKTPM1Model.Customer" />
+    <EntitySet Name="Products" EntityType="Do_An_CDTNKTPM1Model.Product" />
+    <AssociationSet Name="FK__Customer__accoun__37703C52" Association="Do_An_CDTNKTPM1Model.FK__Customer__accoun__37703C52">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cart__Customer_i__3A4CA8FD" Association="Do_An_CDTNKTPM1Model.FK__Cart__Customer_i__3A4CA8FD">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Cart" EntitySet="Carts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartDetai__Cart___3D2915A8" Association="Do_An_CDTNKTPM1Model.FK__CartDetai__Cart___3D2915A8">
+      <End Role="Cart" EntitySet="Carts" />
+      <End Role="CartDetail" EntitySet="CartDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartDetai__Produ__3E1D39E1" Association="Do_An_CDTNKTPM1Model.FK__CartDetai__Produ__3E1D39E1">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="CartDetail" EntitySet="CartDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__Categor__5165187F" Association="Do_An_CDTNKTPM1Model.FK__Product__Categor__5165187F">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="account_id" />
+    </Key>
+    <Property Name="account_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customers" Relationship="Do_An_CDTNKTPM1Model.FK__Customer__accoun__37703C52" FromRole="Account" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="Cart_id" />
+    </Key>
+    <Property Name="Cart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Customer_id" Type="Int32" Nullable="false" />
+    <Property Name="Created_at" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="Do_An_CDTNKTPM1Model.FK__Cart__Customer_i__3A4CA8FD" FromRole="Cart" ToRole="Customer" />
+    <NavigationProperty Name="CartDetails" Relationship="Do_An_CDTNKTPM1Model.FK__CartDetai__Cart___3D2915A8" FromRole="Cart" ToRole="CartDetail" />
+  </EntityType>
+  <EntityType Name="CartDetail">
+    <Key>
+      <PropertyRef Name="Cart_detail_id" />
+    </Key>
+    <Property Name="Cart_detail_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cart_id" Type="Int32" Nullable="false" />
+    <Property Name="Product_id" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Cart" Relationship="Do_An_CDTNKTPM1Model.FK__CartDetai__Cart___3D2915A8" FromRole="CartDetail" ToRole="Cart" />
+    <NavigationProperty Name="Product" Relationship="Do_An_CDTNKTPM1Model.FK__CartDetai__Produ__3E1D39E1" FromRole="CartDetail" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="Category_id" />
+    </Key>
+    <Property Name="Category_id" Type="Int32" Nullable="false" />
+    <Property Name="Category_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Products" Relationship="Do_An_CDTNKTPM1Model.FK__Product__Categor__5165187F" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="account_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Account" Relationship="Do_An_CDTNKTPM1Model.FK__Customer__accoun__37703C52" FromRole="Customer" ToRole="Account" />
+    <NavigationProperty Name="Carts" Relationship="Do_An_CDTNKTPM1Model.FK__Cart__Customer_i__3A4CA8FD" FromRole="Customer" ToRole="Cart" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Product_id" />
+    </Key>
+    <Property Name="Product_id" Type="Int32" Nullable="false" />
+    <Property Name="Product_name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Category_id" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CartDetails" Relationship="Do_An_CDTNKTPM1Model.FK__CartDetai__Produ__3E1D39E1" FromRole="Product" ToRole="CartDetail" />
+    <NavigationProperty Name="Category" Relationship="Do_An_CDTNKTPM1Model.FK__Product__Categor__5165187F" FromRole="Product" ToRole="Category" />
+  </EntityType>
+  <Association Name="FK__Customer__accoun__37703C52">
+    <End Type="Do_An_CDTNKTPM1Model.Account" Role="Account" Multiplicity="1" />
+    <End Type="Do_An_CDTNKTPM1Model.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="account_id" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="account_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cart__Customer_i__3A4CA8FD">
+    <End Type="Do_An_CDTNKTPM1Model.Customer" Role="Customer" Multiplicity="1" />
+    <End Type="Do_An_CDTNKTPM1Model.Cart" Role="Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="Customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartDetai__Cart___3D2915A8">
+    <End Type="Do_An_CDTNKTPM1Model.Cart" Role="Cart" Multiplicity="1" />
+    <End Type="Do_An_CDTNKTPM1Model.CartDetail" Role="CartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="Cart_id" />
+      </Principal>
+      <Dependent Role="CartDetail">
+        <PropertyRef Name="Cart_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartDetai__Produ__3E1D39E1">
+    <End Type="Do_An_CDTNKTPM1Model.Product" Role="Product" Multiplicity="1" />
+    <End Type="Do_An_CDTNKTPM1Model.CartDetail" Role="CartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Product_id" />
+      </Principal>
+      <Dependent Role="CartDetail">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__Categor__5165187F">
+    <End Type="Do_An_CDTNKTPM1Model.Category" Role="Category" Multiplicity="1" />
+    <End Type="Do_An_CDTNKTPM1Model.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="Category_id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
